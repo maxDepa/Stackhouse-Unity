@@ -6,6 +6,7 @@ namespace SH.Model {
     public interface IActivable
     {
         void Activate();
+
         void Deactivate();
 
     }

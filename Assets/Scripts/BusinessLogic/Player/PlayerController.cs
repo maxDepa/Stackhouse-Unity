@@ -16,7 +16,8 @@ namespace SH.BusinessLogic {
         [SerializeField] private Rigidbody2D myRigidbody;
         [SerializeField] private PlayerAnimatorUpdater myPlayerAnimatorUpdater;
 
-        
+
+        private Player player;
         private StateMachine<PlayerStateIndex> stateMachine;
 
         //Properties
@@ -34,19 +35,35 @@ namespace SH.BusinessLogic {
         public PlayerAnimatorUpdater MyPlayerAnimatorUpdater => myPlayerAnimatorUpdater;
 
         //MonoBehaviour
-        private void Start() {
+        private IEnumerator Start() {
             InitializeStateMachine();
+            EventManager.Instance.AddListener(MyEventIndex.OnPlayerDeath, OnPlayerDeath);
+            yield return null;
+            InitializePlayer();
         }
 
         private void Update() {
             stateMachine.Execute();
+
+            //TEST
+            if (Input.GetKeyDown(KeyCode.P))
+                player.DamageHp(10);
         }
 
         private void LateUpdate() {
             stateMachine.LateExecute();
         }
 
+        private void OnDestroy() {
+            EventManager.Instance.RemoveListener(MyEventIndex.OnPlayerDeath, OnPlayerDeath);
+        }
+
         //
+        private void InitializePlayer() {
+            player = new Player(playerData);
+            EventManager.Instance.Cast(MyEventIndex.OnPlayerInitialized, new MyEventArgs(new Vector2Int(0, player.MaxHp)));
+        }
+
         private void InitializeStateMachine() {
             stateMachine = new StateMachine<PlayerStateIndex>();
             stateMachine.AddState(PlayerStateIndex.Idle, new PlayerState_Idle(this));
@@ -60,6 +77,10 @@ namespace SH.BusinessLogic {
 
         public void GoToMoveState() {
             stateMachine.ChangeState(PlayerStateIndex.Move);
+        }
+
+        private void OnPlayerDeath(MyEventArgs arg0) {
+            gameObject.SetActive(false);
         }
 
     }

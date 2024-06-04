@@ -12,6 +12,10 @@ namespace SH.View {
         public void SetText(string text) {
             _text.text = text;
         }
+
+        public void SetTextVisibility(int textLength) { 
+            _text.maxVisibleCharacters = textLength;
+        }
     }
 
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace SH.View {
-    public class UISystem : MonoBehaviour, IActivable
+    public abstract class UISystem : MonoBehaviour, IActivable
     {
         [SerializeField] private BaseScreen startScreen;
         private BaseScreen currentScreen;

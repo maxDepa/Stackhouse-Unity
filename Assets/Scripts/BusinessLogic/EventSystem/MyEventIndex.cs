@@ -7,9 +7,12 @@ namespace SH.BusinessLogic {
     {
         OnGameStart,
 
+        OnPlayerInitialized,
         OnPlayerDamaged,
+        OnPlayerDeath,
         OnPokemonDamaged,
         OnRandomEncounter,
+        OnDialogueStart,
 
         OnInputConfirm,
         OnInputInventory,

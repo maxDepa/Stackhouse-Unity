@@ -44,6 +44,12 @@ namespace SH.BusinessLogic {
             
             if (GetKeyDown(KeyCode.Backspace))
                 EventManager.Instance.Cast(MyEventIndex.OnInputCancel);
+
+            if (GetKeyDown(KeyCode.UpArrow))
+                EventManager.Instance.Cast(MyEventIndex.OnInputUpArrow);
+            
+            if (GetKeyDown(KeyCode.DownArrow))
+                EventManager.Instance.Cast(MyEventIndex.OnInputDownArrow);
         }
     }
 }
