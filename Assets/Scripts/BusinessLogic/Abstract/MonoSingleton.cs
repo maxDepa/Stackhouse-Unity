@@ -7,7 +7,7 @@ namespace SH.BusinessLogic
 {
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        public T Instance { get; private set; }
+        public static T Instance { get; private set; }
 
         private void Awake() {
             if (Instance == null) {

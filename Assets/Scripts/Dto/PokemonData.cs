@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SH.Dto
 {
-    [CreateAssetMenu(fileName = "PD-000", menuName = "DataStructures/PokemonData", order = 0)]
+    [CreateAssetMenu(fileName = "PD-000", menuName = "DataStructures/PokemonData", order = 1)]
     public class PokemonData : ScriptableObject
     {
         public uint index;
