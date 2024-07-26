@@ -10,6 +10,5 @@ public class PokemonCreator : EditorWindow
             data.index = (uint)i + 1;
             AssetDatabase.CreateAsset(data, "Assets/Database/PokemonDatas/PD_" + i + ".asset");
         }
-
     }
 }

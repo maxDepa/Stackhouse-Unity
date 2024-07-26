@@ -1,3 +1,4 @@
+using SH.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace SH.Dto
         public uint index;
         public string description;
         public Sprite gfx;
+
+        public Stat atk;
 
         //Mosse
         //Statistiche

@@ -23,11 +23,13 @@ namespace SH.BusinessLogic {
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {
-            EventManager.Instance.AddListener(MyEventIndex.OnInputConfirm, OnInputConfirm);
+            if(collision.gameObject.GetComponent<PlayerController>() != null)
+                EventManager.Instance.AddListener(MyEventIndex.OnInputConfirm, OnInputConfirm);
         }
 
         private void OnTriggerExit2D(Collider2D collision) {
-            EventManager.Instance.RemoveListener(MyEventIndex.OnInputConfirm, OnInputConfirm);
+            if (collision.gameObject.GetComponent<PlayerController>() != null)
+                EventManager.Instance.RemoveListener(MyEventIndex.OnInputConfirm, OnInputConfirm);
         }
 
         private void OnInputConfirm(MyEventArgs arg0) {
